@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>MELLSTROY.GAME</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Анимации появления */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+    }
+    
+    .fade-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.8s ease-out;
+    }
+    
+    .fade-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.8s ease-out;
+    }
+    
+    .fade-in-up {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease-out;
+    }
+    
+    .fade-in.appear,
+    .fade-in-left.appear,
+    .fade-in-right.appear,
+    .fade-in-up.appear {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    
+    /* Задержки для последовательного появления */
+    .delay-1 { transition-delay: 0.2s; }
+    .delay-2 { transition-delay: 0.4s; }
+    .delay-3 { transition-delay: 0.6s; }
+    .delay-4 { transition-delay: 0.8s; }
+    .delay-5 { transition-delay: 1.0s; }
+    
+    /* Анимации для футера */
+    .footer-col {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease-out;
+    }
+    
+    .footer-col.appear {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Анимация для ссылок в футере */
+    .footer-link {
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .footer-link:hover {
+        color: #8800FF !important;
+        padding-left: 10px !important;
+    }
+    
+    .footer-link::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        background: #ffffff;
+        transition: width 0.3s ease;
+    }
+    
+    .footer-link:hover::before {
+        width: 20px;
+    }
+    
+    /* Стили для адаптации футера */
+    @media (max-width: 768px) {
+        .footer-col {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            max-width: 150px;
+        }
+        
+        /* Скрываем фоновое изображение на мобильных устройствах */
+        .hide-bg-mobile {
+            background-image: none !important;
+        }
+        
+        /* Улучшаем отступы на мобильных */
+        .py-5 {
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+        }
+        
+        .my-5 {
+            margin-top: 2rem !important;
+            margin-bottom: 0 !important;
+        }
+    }
+    
+    /* Дополнительные стили для футера */
+    footer {
+        background: linear-gradient(135deg, );
+        color: #000000;
+    }
+    
+    .footer-text {
+        color: rgba(0, 0, 0, 0.7);
+        line-height: 1.6;
+    }
+    
+    .border-top {
+        border-color: rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .footer-section h5 {
+        position: relative;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .footer-section h5::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: #8800FF;
+        transition: width 0.3s ease;
+    }
+    
+    .footer-section:hover h5::after {
+        width: 60px;
+    }
+    
+    /* Стили для курсора и звуковых эффектов */
+    body {
+        cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%238800FF" opacity="0.7"/></svg>') 12 12, auto;
+    }
+    
+    .sound-image {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .sound-image:hover {
+        transform: scale(1.02);
+    }
+    
+    /* Отключение увеличения для изображений в футере */
+    footer .sound-image:hover {
+        transform: none;
+    }
+
+    .card .sound-image:hover {
+transform: none;
+}
+  </style>
+</head>
+<body>
+    <!-- ШАПКА -->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light py-1 mb-1 fade-in">
+            <div class="container-fluid col-lg-8">
+                <!-- Логотип -->
+                <div class="navbar-brand col-lg-0 mb-0 p-3 mb-lg-0">
+                    <a class="fw-bold mx-4" href="/">
+                        <img src="/images/logo 1.png" alt="MELLSTROY" style="height: 120px;" class="sound-image" data-sound="смех.mp3">
+                    </a>
+                </div>
+    
+                <!-- Кнопка бургер-меню для мобильных -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <!-- Меню -->
+                <div class="collapse navbar-collapse justify-content" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item mx-3">
+                            <a href="/" class="nav-link fs-5 fw-medium">Главная</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a href="prize" class="nav-link fs-5 fw-medium" style="color: #000000;">Призы</a>
+                        </li>
+                     
+                        <li class="nav-item mx-3">
+                            <a href="#contact" class="nav-link fs-5 fw-medium">Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Призы -->
+<div class="container" style="margin-top: 50px;">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="bg-white rounded fade-in-up">
+          <h2 class="fw-bold display-4 mb-2">Что сможешь получить</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="bg-white rounded fade-in-up delay-1">
+            <p class="fs-7">
+                Здесь сможешь выиграть то, о чем так давно мечтал - <br>
+                Квартиры, Деньги, Машины, Бизнесы, все это ждет тебя прямо сейчас!
+              </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- БИЗНЕС -->
+  <div class="container py-4">
+    <div class="row align-items justify-content-center">
+      <div class="col-lg-5 fade-in-left">
+        <img src="/images/бизнес.PNG" alt="Бизнес" class="img-fluid w-100 sound-image" data-sound="бизнес.mp3">
+      </div>
+      <div class="col-lg-4 mt-4 mt-lg-0 fade-in-right delay-1">
+        <div class="rounded p-4">
+          <h3 class="fw-bold display-4 mb-3">БИЗНЕС</h3>
+          <p class="fs-7">
+            Хочешь пассивный доход, но нет бизнеса? Решение есть!<br>
+            Мы не просто даем тебе деньги, мы даем тебе систему. Готовый бизнес-план, франшизу или инвестиционный капитал под твой контроль. Забудь о поиске инвесторов и кредитах с бешеными процентами. Выиграй свой бизнес у Меллстроя — от кофейни до IT-стартапа — и стань хозяином своего времени и финансов. Твоя финансовая независимость начинается здесь.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- МАШИНА -->
+    <div class="container py-4">
+        <div class="row align-items-center justify-content-center flex-row-reverse">
+          <div class="col-lg-5 fade-in-right">
+            <img src="/images/машина1.png" alt="Машина" class="img-fluid w-100 sound-image" data-sound="звук8.mp3">
+          </div>
+          <div class="col-lg-4 mt-4 mt-lg-0 fade-in-left delay-1">
+            <div class="bg-white rounded p-4">
+              <h3 class="fw-bold display-4 mb-3">МАШИНА</h3>
+              <p class="fs-7">
+                Устал от общественного транспорта или мечтаешь о новом уровне комфорта?<br>
+                Это не просто средство передвижения. Это ощущение свободы, статус и новые возможности для контента. Выездные съемки, трипы с друзьями, стильные обзоры прямо из салона — выигранная машина от Меллстроя станет не только твоим личным транспортом, но и мощным инструментом для новых крутых роликов.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  <!-- КВАРТИРЫ -->
+  <div class="container py-4">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-lg-5 fade-in-left">
+        <img src="/images/квартиры.png" alt="Квартира" class="img-fluid w-100 sound-image" data-sound="звук9.mp3">
+      </div>
+      <div class="col-lg-4 mt-4 mt-lg-0 fade-in-right delay-1">
+        <div class="bg-white rounded p-4">
+          <h3 class="fw-bold display-4 mb-3">КВАРТИРА</h3>
+          <p class="fs-7">
+            Мечтаешь о своих метрах, но ипотека пугает? Освободись от долгов!<br>
+            Представь: ты не просто выигрываешь квартиру. Ты выигрываешь свободу от аренды, от ежемесячных платежей банку, от стресса. Это твоя крепость, твое пространство для творчества и жизни. Мы поможем оформить право собственности, чтобы ты мог сразу занести свою гитару, колонку и начать обустраивать гнездышко мечты. Твой дом ждет тебя.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ <!-- ДЕНЬГИ -->
+ <div class="container py-4">
+    <div class="row align-items-center justify-content-center flex-row-reverse">
+      <div class="col-lg-5 fade-in-right">
+        <img src="/images/деньги1.png" alt="Деньги" class="img-fluid sound-image" data-sound="деньги.mp3">
+      </div>
+      <div class="col-lg-4 mt-4 mt-lg-0 fade-in-left delay-1">
+        <div class="bg-white rounded p-4">
+          <h3 class="fw-bold display-4 mb-3">ДЕНЬГИ</h3>
+          <p class="fs-7">
+            Нужен кэш на масштабирование, обучение или мечту? Получи мощный денежный толчок!<br>
+            Легкие деньги? Нет. Заработанные твоим творчеством — да! Выигранную сумму ты можешь направить на что угодно: раскрутку своего канала, покупку профессиональной техники, путешествие по миру за новыми сюжетами или на образование. Это топливо для твоего роста, и его количество ограничено только твоей амбициозностью.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- ФУТЕР -->
+ 
+    <div class="container">
+
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+          <div class="col mb-3 footer-col" >
+            <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+              <img class="footer-logo sound-image" src="/images/logo 1.png" alt="MELLSTROY.GAME" data-sound="звук18.mp3">
+            </a>
+            <p class="footer-text">
+              Сайт создан для конкурса MELLSTROY.GAME, он не несет оскорбительных функций, не является реальной продажей или проведением розыгрышей, все, что было перечислено выше - все это сделано ради шутки и веселья. Не воспринимайте все всерьез. Сайт сделан исключительно в познавательных и развлекательных целях.
+            </p>
+          </div>
+      
+          <div class="col mb-3 footer-col delay-1">
+            <!-- Пустая колонка для отступов -->
+          </div>
+      
+          <div class="col mb-3 footer-col delay-2">
+            <!-- Пустая колонка для отступов -->
+          </div>
+      
+          <div class="col mb-3 footer-col delay-3 footer-section">
+            <h5>Меню</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="/" class="nav-link p-0 footer-link text-body-secondary">Главная</a></li>
+              <li class="nav-item mb-2"><a href="prize" class="nav-link p-0 footer-link text-body-secondary">Призы</a></li>
+              <li class="nav-item mb-2"><a href="#otziv" class="nav-link p-0 footer-link text-body-secondary">Отзывы</a></li>
+              <li class="nav-item mb-2"><a href="#contact" class="nav-link p-0 footer-link text-body-secondary">Контакты</a></li>
+            </ul>
+          </div>
+      
+          <div class="col mb-3 footer-col delay-4 footer-section">
+            <h5>Ссылки на разработчика</h5>
+            <ul class="nav flex-column">
+              <a name="contact"></a>
+              <li class="nav-item mb-2"><a href="https://t.me/defr1z" class="nav-link p-0 footer-link text-body-secondary">TGK</a></li>
+              <li class="nav-item mb-2"><a href="https://www.tiktok.com/@ldefrizl?_t=ZS-90ouK6g0EKa&_r=1" class="nav-link p-0 footer-link text-body-secondary">TikTok</a></li>
+              <li class="nav-item mb-2"><a href="https://www.twitch.tv/ldefrizl" class="nav-link p-0 footer-link text-body-secondary">Twitch</a></li>
+              <li class="nav-item mb-2"><a href="https://www.donationalerts.com/r/defrizl" class="nav-link p-0 footer-link text-body-secondary">Закинуть<br>пару шекелей</a></li>
+            </ul>
+          </div>
+        </footer>
+      </div>
+    
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Функция для анимации появления элементов при скролле
+function initAnimations() {
+    const elements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-up, .footer-col');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Функция для воспроизведения звуков при наведении
+function initSoundEffects() {
+    const soundImages = document.querySelectorAll('.sound-image');
+    
+    // Кэш для звуков
+    const soundCache = {};
+    // Переменная для хранения текущего звука
+    let currentAudio = null;
+    
+    soundImages.forEach(img => {
+        img.addEventListener('mouseenter', function() {
+            const soundFileName = this.getAttribute('data-sound');
+            if (soundFileName) {
+                // Создаем путь к звуку в папке sound
+                const soundPath = `/sound/${soundFileName}`;
+                
+                // Проверяем, есть ли звук в кэше
+                if (!soundCache[soundPath]) {
+                    // Создаем новый Audio объект и сохраняем в кэш
+                    soundCache[soundPath] = new Audio(soundPath);
+                }
+                
+                const audio = soundCache[soundPath];
+                
+                // Останавливаем предыдущий звук
+                if (currentAudio && currentAudio !== audio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                }
+                
+                // Устанавливаем текущий звук
+                currentAudio = audio;
+                
+                // Сбросить звук на начало и воспроизвести
+                audio.currentTime = 0;
+                audio.volume = 0.4; // Установите громкость (от 0 до 1)
+                
+                audio.play().catch(e => {
+                    console.log("Автовоспроизведение звука заблокировано:", e);
+                    // Показать сообщение для пользователя, если нужно
+                });
+            }
+        });
+    });
+}
+
+// Запуск анимаций и звуковых эффектов после загрузки страницы
+document.addEventListener('DOMContentLoaded', function() {
+    initAnimations();
+    initSoundEffects();
+});
+</script>
+</body>
+</html>
